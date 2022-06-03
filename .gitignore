@@ -1,2 +1,5 @@
 # Ignore the VSCode workspace files
 *.code-workspace
+
+# Ignore the database file
+db.sqlite3
