@@ -3,3 +3,6 @@
 
 # Ignore the database file
 db.sqlite3
+
+# Ignored the compiled bytecode files
+*.pyc
