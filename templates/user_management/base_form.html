@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_links %}
+    <link rel="stylesheet" href="{% static 'user_management/css/style.css' %}">
+{% endblock %}
+
+{% block title %}Base Form{% endblock %}
+
+{% block body %}
+    <!-- Signup/Registeration Form -->
+    <div class="bg-light">
+        <div class="container py-5">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-4 col-md-7 col-sm-10 col-xs-12 rounded">
+                    <form method="post">
+                        <div class="card">
+                            <div class="card-header bg-success text-white text-center">
+                                <h3>{% block form_title %}Form Title{% endblock %}</h3>
+                            </div>
+                            <div class="card-body">
+                                {% for field in form %}
+                                    <div class="p-3">
+                                        {{ field }}
+                                        <!-- Report errors if any in the form -->
+                                        {% if field.errors %}
+                                            {% for error in field.errors %}
+                                                <div class="alert alert-danger mt-3 mb-0">
+                                                    {{ error }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                                {% csrf_token %}
+                            </div>
+                            <div class="card-footer bg-success">
+                                <div class="p-3">
+                                    <input type="submit" value="{% block submit_button %}Submit{% endblock %}" class="btn btn-warning btn-block">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block base_scripts %}
+    <script src="{% static 'user_management/js/signup.js' %}"></script>
+{% endblock %}
